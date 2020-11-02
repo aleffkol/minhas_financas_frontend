@@ -18,27 +18,6 @@
       <v-navigation-drawer v-model="drawer" absolute temporary>
         <v-list nav dense>
           <v-list-item-group v-model="group" active-class="deep-purple--text text--accent-4">
-            
-            <!-- <router-link to="/setores">
-              <v-list-item>
-                <v-list-item-icon>
-                  <v-icon>mdi-view-dashboard</v-icon>
-                </v-list-item-icon>
-
-                <v-list-item-title>SETORES</v-list-item-title>
-              </v-list-item>
-            </router-link>
-
-             <router-link to="/perfil">
-              <v-list-item>
-                <v-list-item-icon>
-                  <v-icon>mdi-account-multiple</v-icon>
-                </v-list-item-icon>
-
-                <v-list-item-title>PERFIL</v-list-item-title>
-              </v-list-item>
-            </router-link> -->
-
             <router-link to="/usuarios">
               <v-list-item>
                 <v-list-item-icon>

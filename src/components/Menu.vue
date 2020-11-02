@@ -6,13 +6,6 @@
         <span class="mr-2">FINANÇAS</span>
       </v-btn>
     </router-link>
-<!-- 
-    <router-link to="/relatorio">
-      <v-btn text large color="white">
-        <v-icon left>mdi-android-debug-bridge</v-icon>
-        <span class="mr-2">Bot</span>
-      </v-btn>
-    </router-link> -->
 
       <router-link to="/relatorio_erros">
       <v-btn text large color="white">

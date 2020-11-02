@@ -267,8 +267,7 @@ export default {
       // NOVO
       descricao: "",
       valor: "",
-      // status: "",
-      // tipo_lancamento:"",
+
 
       tipo_l: "",
 
@@ -295,9 +294,7 @@ export default {
   methods: {
     listaLancamentos() {
       let rota = "/lancamentos";
-      // if (this.usuario.papel.descricao !== "super" && this.usuario.setor.tipo.descricao == "comum") {
-      //     rota = `/processos/setor/${this.usuario.setor.id}`;
-      // }
+
       this.axios
         .get(rota, this.configuration)
         .then((res) => {
@@ -316,8 +313,6 @@ export default {
     adicionarLancamento(e) {
       const me = this;
       let data = new FormData();
-      // data.append("arquivo", this.file);
-      // data.append("usuario_id", this.$store.state.usuario.id);
 
       this.form.validateFields((err, values) => {
         if (!err) {

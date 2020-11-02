@@ -4,10 +4,7 @@ import Home from '../views/Home.vue'
 import store from '../store/index.js'
 import Usuarios from '../views/Usuarios.vue'
 import Registro from '../views/Registro.vue'
-// import Setores from '../views/Setores.vue'
-// import Relatorio from '../views/Relatorio.vue'
-// import Relatorio_erros from '../views/Relatorio_erros.vue'
-// import Perfil from '../views/Perfil.vue'
+
 Vue.use(VueRouter)
 
 var router = new VueRouter({
