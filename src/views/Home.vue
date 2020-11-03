@@ -4,7 +4,7 @@
       <v-data-table
         :search="search"
         :headers="headers"
-        :items="lancamentos"
+        :items="lancamentosUsuario"
         class="elevation-1"
       >
         <!-- Campo Pesquisa e Filtragem de processos -->
@@ -240,6 +240,7 @@ export default {
       dateFormat: "DD/MM/YYYY",
       search: "",
       lancamentos: [],
+      lancamentosUsuario:[],
       expanded: [],
       arquivo_upload: "",
       headers: [
@@ -289,12 +290,13 @@ export default {
 
   created() {
     this.listaLancamentos();
+    this.listaLancamentosUsuario()
   },
 
   methods: {
     listaLancamentos() {
       let rota = "/lancamentos";
-
+      
       this.axios
         .get(rota, this.configuration)
         .then((res) => {
@@ -308,6 +310,20 @@ export default {
         .catch((e) => {
           // eslint-disable-line no-unused-vars
         });
+    },
+
+    listaLancamentosUsuario(){
+      let rota = `lancamentos/usuario/${this.usuario.id}`
+      
+      this.axios.get(rota, this.configuration).then((res) =>{
+          this.lancamentosUsuario = res.data.lancamentos          
+          for (let pro of this.lancamentosUsuario) {
+            pro.data = new Date(pro.data).toLocaleString();
+            pro.valor = pro.valor.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+          }
+
+      })
+
     },
 
     adicionarLancamento(e) {
@@ -333,6 +349,7 @@ export default {
             .then((res) => {
               this.visibleAdd = false;
               this.listaLancamentos();
+              this.listaLancamentosUsuario()
               this.cancel();
             });
         }
@@ -379,6 +396,7 @@ export default {
           me.limparEdicao();
           me.cancelUpload();
           me.listaLancamentos();
+          me.listaLancamentosUsuario()
           me.handleReset();
         });
     },
@@ -402,10 +420,11 @@ export default {
         .put(`/lancamentos/${me.editSetor.id}`, me.editSetor, me.configuration)
         .then((res) => {
           if (res.data.success) {
-            this.$message.success("lancamentos Atualizada!");
+            this.$message.success("Lançamento Atualizado!");
           }
           me.limparEdicao();
           me.listaLancamentos();
+          me.listaLancamentosUsuario()
         })
         .catch(function(error) {
           // eslint-disable-line no-unused-vars
@@ -433,9 +452,10 @@ export default {
             .delete(`lancamentos/delete/${item.id}`, me.configuration)
             .then((response) => {
               if (response.data.success) {
-                this.$message.success("lancamentos Removido!");
+                this.$message.success("Lancamentos Removido!");
               }
               me.listaLancamentos();
+              me.listaLancamentosUsuario()
             });
         },
       });

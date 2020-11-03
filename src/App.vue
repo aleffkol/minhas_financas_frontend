@@ -4,10 +4,8 @@
       <v-app-bar style="background-color: #7fa07d;">
         <v-app-bar-nav-icon @click="drawer = true" v-if="logado"></v-app-bar-nav-icon>
 
-        <v-toolbar-title
-               style="font-family: arial;font-size: 20px;color: black;
-       text-transform: uppercase;"
-        >          <img src="./assets/JFW.png" width="30" style="margin-right:10px" />
+        <v-toolbar-title style="font-family: arial;font-size: 20px;color: black;text-transform: uppercase;">      
+          <!-- <img src="./assets/JFW.png" width="30" style="margin-right:10px" />     -->
           <span style="color:white;" >Minhas Finanças</span></v-toolbar-title>
         <v-spacer></v-spacer>
         <div v-if="logado">
