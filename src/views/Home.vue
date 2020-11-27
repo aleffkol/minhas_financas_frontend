@@ -162,6 +162,7 @@
         </a-form-item>
       </a-form>
     </a-modal>
+
     <!-- EDITAR INFORMAÇÕES -->
     <a-modal
       title="Editar lancamentos"
@@ -181,7 +182,7 @@
               <a-input v-model="editSetor.valor"></a-input>
             </a-form-item>
           </a-col>
-          <a-col :span="24">
+          <!-- <a-col :span="24">
             <a-form-item label="Data">
               <a-date-picker
                 v-model="editSetor.data"
@@ -193,7 +194,7 @@
                 ]"
               />
             </a-form-item>
-          </a-col>
+          </a-col> -->
           <a-col :span="24">
             <a-form-item label="Status">
               <!-- <a-input v-model="editSetor.status_bot"></a-input> -->
@@ -281,7 +282,7 @@ export default {
         id: "",
         descricao: "",
         valor: "",
-        data: "",
+        // data: "",
         status: "",
       },
       idExcluir: "",
@@ -379,35 +380,14 @@ export default {
       this.file = files[0];
     },
 
-    send() {
-      let me = this;
-      let data = new FormData();
-
-      data.append("anexo", this.file);
-      data.append("cumprido", this.check);
-      // data.append("observacoes", this.anexoModalObs);
-
-      this.axios
-        .post(`/lancamentos/upload/${this.idUpload}`, data, this.configuration)
-        .then((res) => {
-          if (res.data.success) {
-            this.$message.success("Arquivo anexado a movimentação!");
-          }
-          me.limparEdicao();
-          me.cancelUpload();
-          me.listaLancamentos();
-          me.listaLancamentosUsuario()
-          me.handleReset();
-        });
-    },
-
     editar(item) {
       this.visible = true;
       this.editSetor.descricao = item.descricao;
       this.editSetor.valor = item.valor;
       this.editSetor.status = item.status;
       this.editSetor.id = item.id;
-      this.editSetor.data = item.data;
+      // this.editSetor.data = item.data;
+      console.log(this.editSetor.status)
     },
 
     cancelarEdicao() {

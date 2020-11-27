@@ -15,7 +15,7 @@
 
       <v-navigation-drawer v-model="drawer" absolute temporary>
         <v-list nav dense>
-          <v-list-item-group v-model="group" active-class="deep-purple--text text--accent-4">
+          <v-list-item-group  active-class="deep-purple--text text--accent-4">
             <router-link to="/usuarios">
               <v-list-item>
                 <v-list-item-icon>

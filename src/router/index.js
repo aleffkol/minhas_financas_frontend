@@ -4,7 +4,7 @@ import Home from '../views/Home.vue'
 import store from '../store/index.js'
 import Usuarios from '../views/Usuarios.vue'
 import Registro from '../views/Registro.vue'
-
+import Relatorio from '../views/Relatorio.vue'
 Vue.use(VueRouter)
 
 var router = new VueRouter({
@@ -26,6 +26,17 @@ var router = new VueRouter({
             path: '/usuarios',
             name: 'Usuarios',
             component: Usuarios,
+            meta: {
+                admin: true,
+                super: true,
+                usuario: true,
+            },
+
+        },
+        {
+            path: '/relatorio',
+            name: 'Relatorio',
+            component: Relatorio,
             meta: {
                 admin: true,
                 super: true,

@@ -7,7 +7,7 @@
       </v-btn>
     </router-link>
 
-      <router-link to="/relatorio_erros">
+      <router-link to="/relatorio">
       <v-btn text large color="white">
         <v-icon left>mdi-file-document</v-icon>
         <span class="mr-2">Relatório</span>

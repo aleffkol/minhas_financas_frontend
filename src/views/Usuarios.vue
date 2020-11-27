@@ -172,6 +172,7 @@ export default {
     listar() {
       const me = this;
       let rota = "/usuarios";
+      // let rota = `/usuarios/${this.usuario.id}`;
 
       axios
         .get(rota, this.configuration)

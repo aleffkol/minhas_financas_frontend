@@ -15,7 +15,11 @@ import vuetify from '@/plugins/vuetify'
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
 import VueMask from 'v-mask'
-
+import Chartkick from 'vue-chartkick'
+import Chart from 'chart.js'
+import VueGoogleCharts from 'vue-google-charts'
+ 
+Vue.use(VueGoogleCharts)
 Vue.use(Vuetify)
 Vue.config.productionTip = false
 Vue.use(Antd)
@@ -24,7 +28,7 @@ Vue.use(Vuelidate)
 Vue.use(Vuex)
 Vue.use(SimpleVueValidation);
 Vue.use(VueMask);
-
+Vue.use(Chartkick.use(Chart))
 
 router.beforeResolve((to, from, next) => {
     if (to.name) {
