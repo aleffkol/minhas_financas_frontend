@@ -41,7 +41,7 @@ router.afterEach(() => {
     NProgress.done()
 })
 
-axios.defaults.baseURL = process.env.VUE_APP_HOST || 'https://minhasfinancasbackend.herokuapp.com';
+axios.defaults.baseURL = process.env.VUE_APP_HOST || 'https://minhasfinancasbackend.herokuapp.com/api';
 axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
 
 new Vue({
