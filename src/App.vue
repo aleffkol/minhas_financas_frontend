@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" data-app>
     <v-layout class="mx-auto overflow-hidden" height="400" flat tile>
       <v-app-bar style="background-color: #7fa07d;">
         <v-app-bar-nav-icon @click="drawer = true" v-if="logado"></v-app-bar-nav-icon>

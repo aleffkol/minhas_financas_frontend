@@ -22,11 +22,11 @@
             'userName',
             {
               rules: [
-                { required: true, message: 'Please input your username!' },
+                { required: true, message: 'Insira seu Usuario!' },
               ],
             },
           ]"
-          placeholder="Username"
+          placeholder="Usuario"
         >
           <a-icon slot="prefix" type="user" style="color: rgba(0,0,0,.25)" />
         </a-input>
@@ -37,12 +37,12 @@
             'password',
             {
               rules: [
-                { required: true, message: 'Please input your Password!' },
+                { required: true, message: 'Insira sua senha!' },
               ],
             },
           ]"
           type="password"
-          placeholder="Password"
+          placeholder="Senha"
         >
           <a-icon slot="prefix" type="lock" style="color: rgba(0,0,0,.25)" />
         </a-input>

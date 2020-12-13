@@ -11,9 +11,13 @@
           <v-flex>
             <v-data-table
               :headers="headers"
-              :items="persons"
+              :items="listUser"
               :search="search"
               class="elevation-1"
+              :footer-props="{
+                itemsPerPageOptions: [-1, 10, 20, 30],
+                'items-per-page-text': 'Usuario por página: ',
+              }"
             >
               <template v-slot:top>
                 <v-toolbar flat color="white">
@@ -30,6 +34,7 @@
                   ></v-text-field>
 
                   <v-spacer></v-spacer>
+
                 </v-toolbar>
               </template>
 
@@ -66,6 +71,14 @@
                     <a-input v-model="editUsuario.usuario"></a-input>
                   </a-form-item>
                 </a-col>
+
+                <a-col :span="24">
+                  <a-form-item label="Senha">
+                    <a-input-password
+                      v-model="editUsuario.senha"
+                    ></a-input-password>
+                  </a-form-item>
+                </a-col>
               </a-row>
             </a-form>
 
@@ -100,6 +113,7 @@ export default {
       dialog: false,
       search: "",
       persons: [],
+      listUser: [],
       headers: [
         { text: "Opções", value: "action", sortable: false },
         { text: "Nome", value: "nome", sortable: true },
@@ -110,6 +124,7 @@ export default {
         id: "",
         nome: "",
         usuario: "",
+        senha: "",
       },
 
       adModal: false,
@@ -128,6 +143,7 @@ export default {
 
   created() {
     this.listar();
+    this.listById();
   },
 
   methods: {
@@ -135,12 +151,13 @@ export default {
       this.visible = true;
       this.editUsuario.nome = item.nome;
       this.editUsuario.usuario = item.usuario;
+      this.editUsuario.senha = item.senha;
       this.editUsuario.id = item.id;
     },
 
     alterar() {
       let me = this;
-      axios
+      me.axios
         .put(
           `/usuarios/${this.editUsuario.id}`,
           this.editUsuario,
@@ -174,13 +191,24 @@ export default {
       let rota = "/usuarios";
       // let rota = `/usuarios/${this.usuario.id}`;
 
-      axios
+      me.axios
         .get(rota, this.configuration)
         .then(function(response) {
           me.persons = response.data.usuarios;
+          this.listar();
         })
         .catch(function(error) {
           // eslint-disable-line no-unused-vars
+        });
+    },
+
+    listById() {
+      const me = this;
+      this.axios
+        .get(`/usuarios/${this.usuario.id}`, this.configuration)
+        .then(function(response) {
+          console.log(response.data.usuario);
+          me.listUser.push(response.data.usuario);
         });
     },
 
