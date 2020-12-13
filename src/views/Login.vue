@@ -22,11 +22,19 @@
             'userName',
             {
               rules: [
+<<<<<<< HEAD
                 { required: true, message: 'Please input your username!' },
               ],
             },
           ]"
           placeholder="Username"
+=======
+                { required: true, message: 'Insira seu Usuario!' },
+              ],
+            },
+          ]"
+          placeholder="Usuario"
+>>>>>>> 6333092217828bec68c7ce769f658510e717b49f
         >
           <a-icon slot="prefix" type="user" style="color: rgba(0,0,0,.25)" />
         </a-input>
@@ -37,12 +45,20 @@
             'password',
             {
               rules: [
+<<<<<<< HEAD
                 { required: true, message: 'Please input your Password!' },
+=======
+                { required: true, message: 'Insira sua senha!' },
+>>>>>>> 6333092217828bec68c7ce769f658510e717b49f
               ],
             },
           ]"
           type="password"
+<<<<<<< HEAD
           placeholder="Password"
+=======
+          placeholder="Senha"
+>>>>>>> 6333092217828bec68c7ce769f658510e717b49f
         >
           <a-icon slot="prefix" type="lock" style="color: rgba(0,0,0,.25)" />
         </a-input>

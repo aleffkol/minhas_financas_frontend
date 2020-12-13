@@ -1,5 +1,9 @@
 <template>
+<<<<<<< HEAD
   <div id="app">
+=======
+  <div id="app" data-app>
+>>>>>>> 6333092217828bec68c7ce769f658510e717b49f
     <v-layout class="mx-auto overflow-hidden" height="400" flat tile>
       <v-app-bar style="background-color: #7fa07d;">
         <v-app-bar-nav-icon @click="drawer = true" v-if="logado"></v-app-bar-nav-icon>

@@ -18,6 +18,10 @@
     >
       <a-form-item label="Nome">
         <a-input
+<<<<<<< HEAD
+=======
+          placeholder="Nome"
+>>>>>>> 6333092217828bec68c7ce769f658510e717b49f
           v-decorator="[
             'nome',
             { rules: [{ required: true, message: 'Campo Necessario !' }] },
@@ -27,6 +31,10 @@
 
       <a-form-item label="Usuario">
         <a-input
+<<<<<<< HEAD
+=======
+          placeholder="Usuario"
+>>>>>>> 6333092217828bec68c7ce769f658510e717b49f
           v-decorator="[
             'usuario',
             {
@@ -42,11 +50,19 @@
             {
               rules: [
                 { required: true, message: 'Por favor insira sua senha !' },
+<<<<<<< HEAD
+=======
+                { min: 6, message: 'Senha precisa de no minimo 6 caracteres.' },  
+>>>>>>> 6333092217828bec68c7ce769f658510e717b49f
               ],
             },
           ]"
           type="password"
+<<<<<<< HEAD
           placeholder="Password"
+=======
+          placeholder="Senha"
+>>>>>>> 6333092217828bec68c7ce769f658510e717b49f
         >
         </a-input>
       </a-form-item>
