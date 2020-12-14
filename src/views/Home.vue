@@ -6,13 +6,6 @@
         :headers="headers"
         :items="lancamentosUsuario"
         class="elevation-1"
-<<<<<<< HEAD
-=======
-        :footer-props="{
-          itemsPerPageOptions: [-1, 10, 20, 30],
-          'items-per-page-text': 'Lançamentos por página: ',
-        }"
->>>>>>> 6333092217828bec68c7ce769f658510e717b49f
       >
         <!-- Campo Pesquisa e Filtragem de processos -->
         <template v-slot:[`item.status`]="{ item }">
@@ -85,31 +78,11 @@
               single-line
               hide-details
             ></v-text-field>
-<<<<<<< HEAD
-=======
-            <v-spacer></v-spacer>
-
-            <v-select
-              v-model="value"
-              :items="items"
-              label="Filtrar lançamento por"
-              single-line
-              hide-details
-            ></v-select>
-            <v-spacer></v-spacer>
->>>>>>> 6333092217828bec68c7ce769f658510e717b49f
 
             <v-spacer></v-spacer>
             <a-button type="primary" @click="showModal">
               Adicionar Lançamento <a-icon type="plus" />
             </a-button>
-<<<<<<< HEAD
-=======
-            <!-- <v-spacer></v-spacer>
-            <a-button type="primary" @click="gerarRelatorio()">
-              Relatório Anual<a-icon type="printer" />
-            </a-button> -->
->>>>>>> 6333092217828bec68c7ce769f658510e717b49f
           </v-toolbar>
         </template>
       </v-data-table>
@@ -140,20 +113,12 @@
         </a-form-item>
         <a-form-item label="Valor">
           <a-input-number
-<<<<<<< HEAD
             placeholder="Valor"
             v-model="valor"
             :min="1"
             :formatter="
               (value) => `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
             "
-=======
-            placeholder="Valor R$"
-            v-model="valor"
-            :min="1"
-            :formatter="
-              (value) => `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')"
->>>>>>> 6333092217828bec68c7ce769f658510e717b49f
             :parser="(value) => value.replace(/\$\s?|(,*)/g, '')"
             v-decorator="[
               'valor',
@@ -260,12 +225,6 @@
 <script>
 import locale from "ant-design-vue/es/date-picker/locale/pt_BR";
 import axios from "axios";
-<<<<<<< HEAD
-=======
-// import 'moment/locale/pt-BR';
-import jsPDF from "jspdf";
-import autoTable from "jspdf-autotable";
->>>>>>> 6333092217828bec68c7ce769f658510e717b49f
 
 export default {
   data() {
@@ -282,11 +241,7 @@ export default {
       dateFormat: "DD/MM/YYYY",
       search: "",
       lancamentos: [],
-<<<<<<< HEAD
       lancamentosUsuario:[],
-=======
-      lancamentosUsuario: [],
->>>>>>> 6333092217828bec68c7ce769f658510e717b49f
       expanded: [],
       arquivo_upload: "",
       headers: [
@@ -315,21 +270,13 @@ export default {
       descricao: "",
       valor: "",
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 6333092217828bec68c7ce769f658510e717b49f
       tipo_l: "",
 
       visible: false,
 
       tipo_lancamento: ["Receita", "Despesa"],
       status: ["Pendente", "Confirmado", "Negativo"],
-<<<<<<< HEAD
       status_lancamento: "Lançado",
-=======
-      status_lancamento: "",
->>>>>>> 6333092217828bec68c7ce769f658510e717b49f
       editSetor: {
         id: "",
         descricao: "",
@@ -338,75 +285,18 @@ export default {
         status: "",
       },
       idExcluir: "",
-<<<<<<< HEAD
-=======
-
-      items: [
-        "Todos",
-        "Confirmados",
-        "Pendentes",
-        "Negativados",
-        "Receitas",
-        "Despesas",
-      ],
-      value: "",
->>>>>>> 6333092217828bec68c7ce769f658510e717b49f
     };
   },
 
   created() {
     this.listaLancamentos();
-<<<<<<< HEAD
     this.listaLancamentosUsuario()
-=======
-    this.listaLancamentosUsuario();
-  },
-
-  watch: {
-    dialog(val) {
-      val || this.close();
-    },
-
-    /* eslint-disable no-unused-vars */
-    value(newVal, oldVal) {
-      switch (newVal) {
-        case "Todos":
-          this.expanded = [];
-          this.listaLancamentosUsuario();
-          break;
-        case "Confirmados":
-          this.expanded = [];
-          this.listaLancamentosConfirmados();
-          break;
-        case "Pendentes":
-          this.expanded = [];
-          this.listaLancamentosPendentes();
-          break;
-        case "Negativados":
-          this.expanded = [];
-          this.listaLancamentosNegativados();
-          break;
-        case "Receitas":
-          this.expanded = [];
-          this.listaLancamentosReceitas();
-          break;
-        case "Despesas":
-          this.expanded = [];
-          this.listaLancamentosDespesas();
-          break;
-      }
-    },
->>>>>>> 6333092217828bec68c7ce769f658510e717b49f
   },
 
   methods: {
     listaLancamentos() {
       let rota = "/lancamentos";
-<<<<<<< HEAD
       
-=======
-
->>>>>>> 6333092217828bec68c7ce769f658510e717b49f
       this.axios
         .get(rota, this.configuration)
         .then((res) => {
@@ -422,7 +312,6 @@ export default {
         });
     },
 
-<<<<<<< HEAD
     listaLancamentosUsuario(){
       let rota = `lancamentos/usuario/${this.usuario.id}`
       
@@ -435,77 +324,6 @@ export default {
 
       })
 
-=======
-    listaLancamentosUsuario() {
-      let rota = `lancamentos/usuario/${this.usuario.id}`;
-
-      this.axios.get(rota, this.configuration).then((res) => {
-        this.lancamentosUsuario = res.data.lancamentos;
-        for (let pro of this.lancamentosUsuario) {
-          pro.data = new Date(pro.data).toLocaleString();
-          pro.valor = pro.valor.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-        }
-      });
-    },
-
-    listaLancamentosConfirmados() {
-      let rota = `lancamentos/confirmados/${this.usuario.id}`;
-
-      this.axios.get(rota, this.configuration).then((res) => {
-        this.lancamentosUsuario = res.data.lancamentos;
-        for (let pro of this.lancamentosUsuario) {
-          pro.data = new Date(pro.data).toLocaleString();
-          pro.valor = pro.valor.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-        }
-      });
-    },
-
-    listaLancamentosPendentes() {
-      let rota = `lancamentos/pendentes/${this.usuario.id}`;
-
-      this.axios.get(rota, this.configuration).then((res) => {
-        this.lancamentosUsuario = res.data.lancamentos;
-        for (let pro of this.lancamentosUsuario) {
-          pro.data = new Date(pro.data).toLocaleString();
-          pro.valor = pro.valor.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-        }
-      });
-    },
-
-    listaLancamentosNegativados() {
-      let rota = `lancamentos/negativo/${this.usuario.id}`;
-
-      this.axios.get(rota, this.configuration).then((res) => {
-        this.lancamentosUsuario = res.data.lancamentos;
-        for (let pro of this.lancamentosUsuario) {
-          pro.data = new Date(pro.data).toLocaleString();
-          pro.valor = pro.valor.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-        }
-      });
-    },
-
-    listaLancamentosReceitas() {
-      let rota = `lancamentos/receita/${this.usuario.id}`;
-
-      this.axios.get(rota, this.configuration).then((res) => {
-        this.lancamentosUsuario = res.data.lancamentos;
-        for (let pro of this.lancamentosUsuario) {
-          pro.data = new Date(pro.data).toLocaleString();
-          pro.valor = pro.valor.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-        }
-      });
-    },
-    listaLancamentosDespesas() {
-      let rota = `lancamentos/despesa/${this.usuario.id}`;
-
-      this.axios.get(rota, this.configuration).then((res) => {
-        this.lancamentosUsuario = res.data.lancamentos;
-        for (let pro of this.lancamentosUsuario) {
-          pro.data = new Date(pro.data).toLocaleString();
-          pro.valor = pro.valor.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-        }
-      });
->>>>>>> 6333092217828bec68c7ce769f658510e717b49f
     },
 
     adicionarLancamento(e) {
@@ -531,11 +349,7 @@ export default {
             .then((res) => {
               this.visibleAdd = false;
               this.listaLancamentos();
-<<<<<<< HEAD
               this.listaLancamentosUsuario()
-=======
-              this.listaLancamentosUsuario();
->>>>>>> 6333092217828bec68c7ce769f658510e717b49f
               this.cancel();
             });
         }
@@ -572,11 +386,7 @@ export default {
       this.editSetor.status = item.status;
       this.editSetor.id = item.id;
       // this.editSetor.data = item.data;
-<<<<<<< HEAD
       console.log(this.editSetor.status)
-=======
-      console.log(this.editSetor.status);
->>>>>>> 6333092217828bec68c7ce769f658510e717b49f
     },
 
     cancelarEdicao() {
@@ -593,11 +403,7 @@ export default {
           }
           me.limparEdicao();
           me.listaLancamentos();
-<<<<<<< HEAD
           me.listaLancamentosUsuario()
-=======
-          me.listaLancamentosUsuario();
->>>>>>> 6333092217828bec68c7ce769f658510e717b49f
         })
         .catch(function(error) {
           // eslint-disable-line no-unused-vars
@@ -628,19 +434,11 @@ export default {
                 this.$message.success("Lancamentos Removido!");
               }
               me.listaLancamentos();
-<<<<<<< HEAD
               me.listaLancamentosUsuario()
-=======
-              me.listaLancamentosUsuario();
->>>>>>> 6333092217828bec68c7ce769f658510e717b49f
             });
         },
       });
     },
-<<<<<<< HEAD
-=======
-
->>>>>>> 6333092217828bec68c7ce769f658510e717b49f
   },
 };
 </script>

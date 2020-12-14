@@ -11,19 +11,9 @@
           <v-flex>
             <v-data-table
               :headers="headers"
-<<<<<<< HEAD
               :items="persons"
               :search="search"
               class="elevation-1"
-=======
-              :items="listUser"
-              :search="search"
-              class="elevation-1"
-              :footer-props="{
-                itemsPerPageOptions: [-1, 10, 20, 30],
-                'items-per-page-text': 'Usuario por página: ',
-              }"
->>>>>>> 6333092217828bec68c7ce769f658510e717b49f
             >
               <template v-slot:top>
                 <v-toolbar flat color="white">
@@ -40,10 +30,6 @@
                   ></v-text-field>
 
                   <v-spacer></v-spacer>
-<<<<<<< HEAD
-=======
-
->>>>>>> 6333092217828bec68c7ce769f658510e717b49f
                 </v-toolbar>
               </template>
 
@@ -80,17 +66,6 @@
                     <a-input v-model="editUsuario.usuario"></a-input>
                   </a-form-item>
                 </a-col>
-<<<<<<< HEAD
-=======
-
-                <a-col :span="24">
-                  <a-form-item label="Senha">
-                    <a-input-password
-                      v-model="editUsuario.senha"
-                    ></a-input-password>
-                  </a-form-item>
-                </a-col>
->>>>>>> 6333092217828bec68c7ce769f658510e717b49f
               </a-row>
             </a-form>
 
@@ -125,10 +100,6 @@ export default {
       dialog: false,
       search: "",
       persons: [],
-<<<<<<< HEAD
-=======
-      listUser: [],
->>>>>>> 6333092217828bec68c7ce769f658510e717b49f
       headers: [
         { text: "Opções", value: "action", sortable: false },
         { text: "Nome", value: "nome", sortable: true },
@@ -139,10 +110,6 @@ export default {
         id: "",
         nome: "",
         usuario: "",
-<<<<<<< HEAD
-=======
-        senha: "",
->>>>>>> 6333092217828bec68c7ce769f658510e717b49f
       },
 
       adModal: false,
@@ -161,10 +128,6 @@ export default {
 
   created() {
     this.listar();
-<<<<<<< HEAD
-=======
-    this.listById();
->>>>>>> 6333092217828bec68c7ce769f658510e717b49f
   },
 
   methods: {
@@ -172,20 +135,12 @@ export default {
       this.visible = true;
       this.editUsuario.nome = item.nome;
       this.editUsuario.usuario = item.usuario;
-<<<<<<< HEAD
-=======
-      this.editUsuario.senha = item.senha;
->>>>>>> 6333092217828bec68c7ce769f658510e717b49f
       this.editUsuario.id = item.id;
     },
 
     alterar() {
       let me = this;
-<<<<<<< HEAD
       axios
-=======
-      me.axios
->>>>>>> 6333092217828bec68c7ce769f658510e717b49f
         .put(
           `/usuarios/${this.editUsuario.id}`,
           this.editUsuario,
@@ -219,37 +174,16 @@ export default {
       let rota = "/usuarios";
       // let rota = `/usuarios/${this.usuario.id}`;
 
-<<<<<<< HEAD
       axios
         .get(rota, this.configuration)
         .then(function(response) {
           me.persons = response.data.usuarios;
-=======
-      me.axios
-        .get(rota, this.configuration)
-        .then(function(response) {
-          me.persons = response.data.usuarios;
-          this.listar();
->>>>>>> 6333092217828bec68c7ce769f658510e717b49f
         })
         .catch(function(error) {
           // eslint-disable-line no-unused-vars
         });
     },
 
-<<<<<<< HEAD
-=======
-    listById() {
-      const me = this;
-      this.axios
-        .get(`/usuarios/${this.usuario.id}`, this.configuration)
-        .then(function(response) {
-          console.log(response.data.usuario);
-          me.listUser.push(response.data.usuario);
-        });
-    },
-
->>>>>>> 6333092217828bec68c7ce769f658510e717b49f
     close() {
       this.limpar();
       this.dialog = false;
