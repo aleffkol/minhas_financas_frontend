@@ -18,6 +18,7 @@
     >
       <a-form-item label="Nome">
         <a-input
+          placeholder="Nome"
           v-decorator="[
             'nome',
             { rules: [{ required: true, message: 'Campo Necessario !' }] },
@@ -27,6 +28,7 @@
 
       <a-form-item label="Usuario">
         <a-input
+          placeholder="Usuario"
           v-decorator="[
             'usuario',
             {
@@ -42,11 +44,12 @@
             {
               rules: [
                 { required: true, message: 'Por favor insira sua senha !' },
+                { min: 6, message: 'Senha precisa de no minimo 6 caracteres.' },  
               ],
             },
           ]"
           type="password"
-          placeholder="Password"
+          placeholder="Senha"
         >
         </a-input>
       </a-form-item>
